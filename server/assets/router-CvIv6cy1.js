@@ -198,13 +198,15 @@ const rootRouteChildren = {
   PrivacyPolicyRoute
 };
 const routeTree = Route$2._addFileChildren(rootRouteChildren)._addFileTypes();
+const basepath = "/";
 const getRouter = () => {
   const queryClient = new QueryClient();
   const router = createRouter({
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
-    defaultPreloadStaleTime: 0
+    defaultPreloadStaleTime: 0,
+    basepath
   });
   return router;
 };
