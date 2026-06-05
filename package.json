@@ -5,16 +5,16 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "start": "react-scripts start",
+    "dev": "vite",
     "build": "vite build",
-    "build:gh-pages": "bun scripts/gh-pages-static-export.ts",
-    "deploy:gh-pages": "bun scripts/gh-pages-static-export.ts && gh-pages -d gh-pages-dist",
-    "predeploy": "npm run build:gh-pages",
-    "deploy": "gh-pages -d gh-pages-dist",
     "build:dev": "vite build --mode development",
-    "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
