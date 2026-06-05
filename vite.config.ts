@@ -18,5 +18,23 @@ export default defineConfig({
   },
   vite: {
     base,
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "vendor-react": ["react", "react-dom"],
+            "vendor-framer": ["framer-motion"],
+            "vendor-router": ["@tanstack/react-router"],
+          },
+        },
+      },
+      // Optimize asset sizes
+      minify: "terser",
+    },
+    server: {
+      headers: {
+        "Cache-Control": "public, max-age=31536000",
+      },
+    },
   },
 });

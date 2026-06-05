@@ -35,6 +35,7 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
+import { resolveAssetUrl } from "@/lib/utils";
 import dealership from "@/assets/dealership.jpg";
 import carSedan from "@/assets/car-sedan.jpg";
 import soldBaleno from "@/assets/happy-customers/sold-baleno.jpg.asset.json";
@@ -368,9 +369,9 @@ import testimonialVideo2 from "@/assets/testimonial-2.mp4.asset.json";
 import testimonialVideo3 from "@/assets/testimonial-3.mp4.asset.json";
 
 const testimonials = [
-  { id: "v1", src: testimonialVideo1.url },
-  { id: "v2", src: testimonialVideo2.url },
-  { id: "v3", src: testimonialVideo3.url },
+  { id: "v1", src: resolveAssetUrl(testimonialVideo1) },
+  { id: "v2", src: resolveAssetUrl(testimonialVideo2) },
+  { id: "v3", src: resolveAssetUrl(testimonialVideo3) },
 ];
 
 export function TestimonialsSection() {
@@ -519,6 +520,7 @@ function TestimonialCard({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const togglePlay = () => {
     const v = videoRef.current;
@@ -548,10 +550,11 @@ function TestimonialCard({
           playsInline
           muted={muted}
           loop
-          preload="metadata"
+          preload={index === 0 ? "metadata" : "none"}
           onClick={togglePlay}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
+          onLoadedMetadata={() => setLoaded(true)}
           className="w-full h-full object-cover cursor-pointer"
         />
 
@@ -798,7 +801,7 @@ export function FAQSection() {
 
             <div className="relative rounded-2xl overflow-hidden mb-6 shadow-xl group">
               <img
-                src={faqSupportAsset.url}
+                src={resolveAssetUrl(faqSupportAsset)}
                 alt="Metro Cars Vijayawada support team helping a customer"
                 loading="lazy"
                 width={1024}
@@ -957,13 +960,13 @@ export function CTASection() {
 /* ---------- Happy Customers Slider ---------- */
 export function HappyCustomersSection() {
   const slides = [
-    { src: soldBaleno.url, label: "Baleno Automatic" },
-    { src: soldNexon.url, label: "Tata Nexon" },
-    { src: soldCreta.url, label: "Hyundai Creta" },
-    { src: soldInnova.url, label: "Toyota Innova" },
-    { src: soldFortuner.url, label: "Toyota Fortuner" },
-    { src: soldAlto.url, label: "Alto 800" },
-    { src: soldGrandi10.url, label: "Grand i10" },
+    { src: resolveAssetUrl(soldBaleno), label: "Baleno Automatic" },
+    { src: resolveAssetUrl(soldNexon), label: "Tata Nexon" },
+    { src: resolveAssetUrl(soldCreta), label: "Hyundai Creta" },
+    { src: resolveAssetUrl(soldInnova), label: "Toyota Innova" },
+    { src: resolveAssetUrl(soldFortuner), label: "Toyota Fortuner" },
+    { src: resolveAssetUrl(soldAlto), label: "Alto 800" },
+    { src: resolveAssetUrl(soldGrandi10), label: "Grand i10" },
   ];
   const [index, setIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(3);
@@ -1068,7 +1071,7 @@ export function MetroFooter() {
       <div
         className="absolute inset-0 z-0 opacity-30"
         style={{
-          backgroundImage: `url(${footerBg.url})`,
+          backgroundImage: `url(${resolveAssetUrl(footerBg)})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -1077,7 +1080,7 @@ export function MetroFooter() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <img src={logoAsset.url} alt="Metro Cars" className="h-24 lg:h-28 w-auto mb-4" />
+            <img src={resolveAssetUrl(logoAsset)} alt="Metro Cars" className="h-24 lg:h-28 w-auto mb-4" />
             <p className="text-white/60 text-sm leading-relaxed">
               Vijayawada's trusted destination for certified pre-owned cars, transparent pricing and exceptional service.
             </p>
