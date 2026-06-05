@@ -4,10 +4,8 @@ import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
-const base = process.env.GH_PAGES_BASE || "/";
-
 export default defineConfig({
-  base,
+  base: "/remix-of-metro-cars-premier/",
   plugins: [
     tsConfigPaths(),
     tailwindcss(),
