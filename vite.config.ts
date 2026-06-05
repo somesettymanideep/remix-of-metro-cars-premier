@@ -6,10 +6,17 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Extract base path from package.json homepage for GitHub Pages deployments
+const homepage = process.env.HOMEPAGE || process.env.PUBLIC_URL || "";
+const base = process.env.GH_PAGES_BASE || (homepage ? new URL(homepage).pathname : "/");
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+  },
+  vite: {
+    base,
   },
 });

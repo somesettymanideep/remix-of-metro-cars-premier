@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "build:gh-pages": "bun scripts/gh-pages-static-export.ts",
+    "deploy:gh-pages": "bun scripts/gh-pages-static-export.ts && gh-pages -d gh-pages-dist",
+    "predeploy": "npm run build:gh-pages",
+    "deploy": "gh-pages -d gh-pages-dist",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
