@@ -83,12 +83,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Metro Cars Vijayawada" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Metro Cars Vijayawada" },
-      { name: "twitter:title", content: "Metro Cars Vijayawada" },
-      { property: "og:description", content: "Buy certified pre owned cars in Vijayawada at Metro Cars. Wide range of sedans, SUVs, hatchbacks & luxury vehicles. Transparent pricing, verified history, easy financing options available." },
-      { name: "twitter:description", content: "Buy certified pre owned cars in Vijayawada at Metro Cars. Wide range of sedans, SUVs, hatchbacks & luxury vehicles. Transparent pricing, verified history, easy financing options available." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6c2bd598-946d-4962-b83e-642e245ac5e0/id-preview-7dc69e04--bd88ba5d-22e0-42cc-97c4-4457f2c9113f.lovable.app-1780637358636.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6c2bd598-946d-4962-b83e-642e245ac5e0/id-preview-7dc69e04--bd88ba5d-22e0-42cc-97c4-4457f2c9113f.lovable.app-1780637358636.png" },
     ],
     links: [
       {
